@@ -11,7 +11,7 @@ setup(
     author_email="",
     description="A simple Apache Spark image generator.",
     install_requires=["jinja2", "requests"],
-    scripts=[],
+    scripts=["bin/makebox"],
     package_data={"": ["templates/*"]},
     classifiers=[
         "Development Status :: 3 - Alpha",
