@@ -43,4 +43,6 @@ if __name__ == "__main__":
     parser.add_argument("--no-r", dest="with_r", action="store_false")
     parser.set_defaults(with_r=False)
 
+    parser.add_argument("--output-dir", dest="output_dir")
+
     print(main(parser.parse_args()))

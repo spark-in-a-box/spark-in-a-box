@@ -1,13 +1,16 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import (absolute_import, division, print_function)
-from sparkinabox.release import __author__, __version__
 
-import requests
+import os
+import sys
 import re
 from functools import lru_cache
+
+import requests
 from jinja2 import PackageLoader, Environment
 
+from sparkinabox.release import __author__, __version__
 
 @lru_cache(128)
 def closest_apache_mirror(fallback=None):
