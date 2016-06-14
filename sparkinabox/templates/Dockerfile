@@ -13,7 +13,6 @@ ENV CURL_CA_BUNDLE /etc/ssl/certs/ca-certificates.crt
 ENV SPARK_HOME /home/{{ USERNAME }}/spark-{{ SPARK_VERSION }}
 
 ENV PYSPARK_PYTHON /home/{{ USERNAME }}/anaconda{{ PYTHON_VERSION }}/bin/python
-ENV PYSPARK_DRIVER_PYTHON /home/{{ USERNAME }}/anaconda{{ PYTHON_VERSION }}/bin/ipython
 ENV PYTHON_HASHSEED {{ PYTHON_HASHSEED }}
 
 # See https://github.com/phusion/baseimage-docker/issues/58

@@ -71,7 +71,16 @@ def render_base(args):
 
 
 def main(args):
-    return render_base(args)
+    if os.path.exists(args.output_dir):
+        print("Output directory {0} already exists. Exiting.".format(args.output_dir))
+        sys.exit(1)
+
+    basedir = os.path.join(args.output_dir, "base")
+    os.makedirs(basedir)
+
+    with open(os.path.join(basedir, "Dockerfile"), "w") as fw:
+        fw.write(render_base(args))
+
 
 
 
