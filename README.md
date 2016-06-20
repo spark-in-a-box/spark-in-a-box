@@ -1,5 +1,13 @@
 A simple commandline utility to generate Docker images for testing and development of the Apache Spark applications.
 
+## Installation 
+
+```
+pip install -e git://github.com/zero323/spark-in-a-box.git@v0.0.1#egg=sparkinabox
+```
+
+## Usage
+
 ```
 usage: makebox [-h] [--username USERNAME]
                [--anaconda-repository ANACONDA_REPOSITORY]
