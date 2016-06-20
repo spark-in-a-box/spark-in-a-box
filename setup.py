@@ -4,7 +4,7 @@ from sparkinabox import __author__, __version__
 setup(
     name="sparkinabox",
     version=__version__,
-    packages=["sparkinabox"],
+    packages=["sparkinabox", "sparkinabox.utils"],
     url="https://github.com/zero323/spark-in-a-box",
     license="MIT",
     author=__author__,
