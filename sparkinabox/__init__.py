@@ -34,7 +34,7 @@ def render_base(args):
         "WITH_R": args.with_r,
     }
 
-    return normalize_blanklines(env.get_template("Dockerfile").render(defaults))
+    return normalize_blanklines(env.get_template("base.Dockerfile").render(defaults))
 
 
 def main(args):
