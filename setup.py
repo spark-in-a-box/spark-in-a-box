@@ -12,7 +12,7 @@ setup(
     description="A simple Apache Spark image generator.",
     install_requires=["jinja2", "requests"],
     scripts=["bin/makebox"],
-    package_data={"": ["templates/*"]},
+    package_data={"": ["templates/dockerfiles/*"]},
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Console",

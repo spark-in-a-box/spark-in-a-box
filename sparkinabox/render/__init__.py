@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function, division, absolute_import
+import os
 
 from jinja2 import Environment, PackageLoader
 
@@ -10,6 +11,7 @@ from sparkinabox.utils import closest_apache_mirror, mvn_params, anaconda_instal
 
 def render_docker(args, target="base"):
     env = Environment(loader=PackageLoader('sparkinabox', 'templates'))
+    template = env.get_template(os.path.join("dockerfiles", "{0}.Dockerfile".format(target)))
 
     defaults = {
         "USERNAME": args.username,
@@ -33,4 +35,4 @@ def render_docker(args, target="base"):
         "DOCKER_NAME": args.docker_name
     }
 
-    return normalize_blanklines(env.get_template("{0}.Dockerfile".format(target)).render(defaults))
+    return normalize_blanklines(env.get_template(template).render(defaults))
