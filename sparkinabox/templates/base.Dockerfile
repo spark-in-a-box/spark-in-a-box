@@ -62,3 +62,4 @@ RUN wget {{ SPARK_DIST_URL }}/spark-{{ SPARK_VERSION }}/spark-{{ SPARK_VERSION }
                  -Pnetlib-lgpl -DskipTests {{ MVN_PARAMS }} \
                  clean package
 
+ENV PATH $PATH:$SPARK_HOME/bin
