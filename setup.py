@@ -1,10 +1,10 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 from sparkinabox import __author__, __version__
 
 setup(
     name="sparkinabox",
     version=__version__,
-    packages=["sparkinabox", "sparkinabox.utils"],
+    packages=find_packages("."),
     url="https://github.com/zero323/spark-in-a-box",
     license="MIT",
     author=__author__,
