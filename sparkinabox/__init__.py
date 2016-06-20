@@ -14,7 +14,7 @@ def main(args):
         print("Output directory {0} already exists. Exiting.".format(args.output_dir))
         sys.exit(1)
 
-    for target in ["base", "client"]:
+    for target in ["base", "client", "master", "worker"]:
         basedir = os.path.join(args.output_dir, target)
         os.makedirs(basedir)
         with open(os.path.join(basedir, "Dockerfile"), "w") as fw:
