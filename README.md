@@ -3,10 +3,12 @@ A simple commandline utility to generate Docker images for testing and developme
 ## Installation 
 
 ```
-pip install -e git://github.com/zero323/spark-in-a-box.git@v0.0.1#egg=sparkinabox
+pip install -e git://github.com/zero323/spark-in-a-box.git@v0.0.2#egg=sparkinabox
 ```
 
 ## Usage
+
+### Arguments
 
 ```
 usage: makebox [-h] [--username USERNAME]
@@ -50,3 +52,23 @@ optional arguments:
   --profile {local,standalone}
   --client-entrypoint {spark-submit,spark-shell,pyspark,sparkR}
 ```
+
+### Example session
+
+```bash
+# Create docker files
+makebox --python-hashseed 323 --output-dir sparkinabox --profile standalone --spark 2.0.0-preview 
+cd sparkinabox
+# Build images
+make build
+# Start cluster
+make up
+# Add worker
+docker-compose scale worker=2
+# Submit PI example 
+docker-compose run client --master spark://master:7077 \
+               "/home/spark/spark-2.0.0-preview/examples/src/main/python/pi.py" 10
+# Stop cluster
+make down
+```
+ 
