@@ -28,7 +28,7 @@ def make_master(context):
     return {
         "build": "./master",
         "image": _image(context, "master"),
-        "ports": ["8080"],
+        "ports": ["8080:8080"],
     }
 
 
@@ -48,4 +48,4 @@ def make_compose(context, targets):
             "worker": make_worker,
             "client": make_client,
         }.items() if target in targets}
-    })
+    }, default_flow_style=False)
