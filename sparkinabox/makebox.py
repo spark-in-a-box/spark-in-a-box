@@ -8,6 +8,7 @@ import sys
 
 from sparkinabox.render import render_docker, render_make
 from sparkinabox.utils import closest_apache_mirror, mvn_params, anaconda_installer, anaconda_url
+from sparkinabox.compose import make_compose
 
 targets = {
     "local": ["base", "client"],
@@ -37,6 +38,7 @@ def make_context(args):
         "DOCKER_PREFIX": args.docker_prefix,
         "DOCKER_NAME": args.docker_name,
         "CLIENT_ENTRYPOINT": args.client_entrypoint,
+        "PROFILE": args.profile,
     }
 
 
@@ -55,5 +57,9 @@ def make_box(args):
 
     with open(os.path.join(args.output_dir, "Makefile"), "w") as fw:
         fw.write(render_make(context))
+
+    with open(os.path.join(args.output_dir, "docker-compose.yml"), "w") as fw:
+        fw.write(make_compose(context, targets[args.profile]))
+
 
 
