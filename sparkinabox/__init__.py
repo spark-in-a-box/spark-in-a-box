@@ -57,7 +57,7 @@ def main():
     parser.add_argument("--output-dir", dest="output_dir", required=True)
 
     parser.add_argument("--docker-prefix", dest="docker_prefix", default="zero323")
-    parser.add_argument("--docker-names", dest="docker_name", default="spark-sandbox")
+    parser.add_argument("--docker-name", dest="docker_name", default="spark-sandbox")
 
     parser.add_argument("--profile", choices=["local", "standalone"], default="local")
     parser.add_argument("--client-entrypoint",

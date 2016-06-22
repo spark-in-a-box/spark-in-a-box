@@ -21,7 +21,7 @@ usage: makebox [-h] [--username USERNAME]
                [--with-hadoop-provided | --no-hadoop-provided]
                [--with-hive | --no-hive] [--with-yarn | --no-yarn]
                [--with-r | --no-r] --output-dir OUTPUT_DIR
-               [--docker-prefix DOCKER_PREFIX] [--docker-names DOCKER_NAME]
+               [--docker-prefix DOCKER_PREFIX] [--docker-name DOCKER_NAME]
                [--profile {local,standalone}]
                [--client-entrypoint {spark-submit,spark-shell,pyspark,sparkR}]
 
@@ -49,7 +49,7 @@ optional arguments:
   --no-r
   --output-dir OUTPUT_DIR
   --docker-prefix DOCKER_PREFIX
-  --docker-names DOCKER_NAME
+  --docker-name DOCKER_NAME
   --profile {local,standalone}
   --client-entrypoint {spark-submit,spark-shell,pyspark,sparkR}
 ```
