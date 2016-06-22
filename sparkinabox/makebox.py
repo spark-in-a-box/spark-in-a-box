@@ -17,6 +17,7 @@ targets = {
 
 
 def make_context(args):
+    apache_mirror = closest_apache_mirror()
     return {
         "USERNAME": args.username,
         "JDK_VERSION": args.jdk,
@@ -26,8 +27,8 @@ def make_context(args):
         "HADOOP_FULL_VERSION": args.hadoop_version,
         "HADOOP_MAJOR_VERSION": "{0}.{1}".format(*args.hadoop_version.split(".")),
         "APACHE_MIRROR": closest_apache_mirror(),
-        "SPARK_DIST_URL": "{0}/spark".format(closest_apache_mirror()),
-        "HADOOP_DIST_URL": "{0}/hadoop/common".format(closest_apache_mirror()),
+        "SPARK_DIST_URL": "{0}/spark".format(apache_mirror),
+        "HADOOP_DIST_URL": "{0}/hadoop/common".format(apache_mirror),
         "MVN_PARAMS": mvn_params(args),
         "ANACONDA_INSTALLER": anaconda_installer(args.anaconda, "latest", args.python),
         "ANACONDA_URL": anaconda_url(args.anaconda_repository, args.anaconda),

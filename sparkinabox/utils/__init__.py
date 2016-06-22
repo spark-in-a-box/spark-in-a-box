@@ -2,14 +2,11 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function, division, absolute_import
-
 import re
-from functools import lru_cache
 
 import requests
 
 
-@lru_cache(128)
 def closest_apache_mirror(fallback=None):
     """http://stackoverflow.com/q/21534797"""
     r = requests.get("https://www.apache.org/dyn/closer.cgi?as_json=1")
