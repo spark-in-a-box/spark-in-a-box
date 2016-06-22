@@ -32,7 +32,8 @@ def render_docker(args, target="base"):
         "HADOOP_PROVIDED": args.hadoop_provided,
         "WITH_R": args.with_r,
         "DOCKER_PREFIX": args.docker_prefix,
-        "DOCKER_NAME": args.docker_name
+        "DOCKER_NAME": args.docker_name,
+        "CLIENT_ENTRYPOINT": args.client_entrypoint,
     }
 
     return normalize_blanklines(env.get_template(template).render(defaults))

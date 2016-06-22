@@ -49,5 +49,8 @@ if __name__ == "__main__":
     parser.add_argument("--docker-names", dest="docker_name", default="spark-sandbox")
 
     parser.add_argument("--profile", choices=["local", "standalone"], default="local")
+    parser.add_argument("--client-entrypoint",
+                        choices=["spark-submit", "spark-shell", "pyspark", "sparkR"],
+                        default="spark-submit")
 
     main(parser.parse_args())
