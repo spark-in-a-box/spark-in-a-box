@@ -20,7 +20,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 
 RUN apt-get update \
     && apt-get install -y wget \
-    && apt-get install -y openjdk-{{ JDK_VERSION }}-jdk-headless \
+    && apt-get install -y --no-install-recommends openjdk-{{ JDK_VERSION }}-jdk-headless \
     && apt-get install -y libatlas3-base libopenblas-base \
     && apt-get install -y bzip2 \
     && apt-get clean \
@@ -62,3 +62,4 @@ RUN wget {{ SPARK_DIST_URL }}/spark-{{ SPARK_VERSION }}/spark-{{ SPARK_VERSION }
                  -Pnetlib-lgpl -DskipTests {{ MVN_PARAMS }} \
                  clean package
 
+ENV PATH $PATH:$SPARK_HOME/bin

@@ -1,49 +1,62 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
+
 from __future__ import (absolute_import, division, print_function)
-
-import os
-import sys
-
-from jinja2 import PackageLoader, Environment
+import random
+import argparse
 
 from sparkinabox.release import __author__, __version__
-from sparkinabox.utils import closest_apache_mirror, anaconda_url, anaconda_installer, mvn_params, normalize_blanklines
+from sparkinabox.makebox import make_box
 
 
-def render_base(args):
-    env = Environment(loader=PackageLoader('sparkinabox', 'templates'))
+def main():
+    parser = argparse.ArgumentParser()
 
-    defaults = {
-        "USERNAME": args.username,
-        "JDK_VERSION": args.jdk,
-        "PYTHON_VERSION": args.python,
-        "SCALA_VERSION": args.scala,
-        "SPARK_VERSION": args.spark,
-        "HADOOP_FULL_VERSION": args.hadoop_version,
-        "HADOOP_MAJOR_VERSION": "{0}.{1}".format(*args.hadoop_version.split(".")),
-        "APACHE_MIRROR": closest_apache_mirror(),
-        "SPARK_DIST_URL": "{0}/spark".format(closest_apache_mirror()),
-        "HADOOP_DIST_URL": "{0}/hadoop/common".format(closest_apache_mirror()),
-        "MVN_PARAMS": mvn_params(args),
-        "ANACONDA_INSTALLER": anaconda_installer(args.anaconda, "latest", args.python),
-        "ANACONDA_URL": anaconda_url(args.anaconda_repository, args.anaconda),
-        "PYTHON_HASHSEED": args.python_hashseed,
-        "PYTHON_PACKAGES":  "{0}{1}".format("nomkl " if args.nomkl else "", args.python_packages),
-        "HADOOP_PROVIDED": args.hadoop_provided,
-        "WITH_R": args.with_r,
-    }
+    parser.add_argument("--username", default="spark")
 
-    return normalize_blanklines(env.get_template("base.Dockerfile").render(defaults))
+    parser.add_argument("--anaconda-repository", default="https://repo.continuum.io/")
+    parser.add_argument("--anaconda", choices=["anaconda", "miniconda"], default="miniconda")
 
+    parser.add_argument("--python", choices=["2", "3"], default="3")
+    parser.add_argument("--python-packages", nargs="*",
+                        default="numpy scipy scikit-learn numexpr numba curl toolz dask")
 
-def main(args):
-    if os.path.exists(args.output_dir):
-        print("Output directory {0} already exists. Exiting.".format(args.output_dir))
-        sys.exit(1)
+    parser.add_argument('--with-mkl', dest='nomkl', action="store_false")
+    parser.add_argument('--no-mkl', dest='nomkl', action="store_true")
+    parser.set_defaults(nomkl=True)
 
-    basedir = os.path.join(args.output_dir, "base")
-    os.makedirs(basedir)
+    parser.add_argument("--python-hashseed", default=random.randint(0, 2 ** 31 - 1), type=int)
 
-    with open(os.path.join(basedir, "Dockerfile"), "w") as fw:
-        fw.write(render_base(args))
+    parser.add_argument("--scala", choices=["2.10", "2.11"], default="2.11")
+    parser.add_argument("--spark", choices=["1.6.1", "2.0.0-preview"], default="2.0.0-preview")
+    parser.add_argument("--jdk", choices=["7", "8"], default="8"),
+
+    parser.add_argument("--hadoop-version", default="2.7.2")
+
+    parser.add_argument("--with-hadoop-provided", dest="with_hadoop_provided", action="store_true")
+    parser.add_argument("--no-hadoop-provided", dest="with_hadoop_provided", action="store_false")
+    parser.set_defaults(hadoop_provided=True)
+
+    parser.add_argument("--with-hive", dest="with_hive", action="store_true")
+    parser.add_argument("--no-hive", dest="with_hive", action="store_false")
+    parser.set_defaults(with_hive=True)
+
+    parser.add_argument("--with-yarn", dest="with_yarn", action="store_true")
+    parser.add_argument("--no-yarn", dest="with_yarn", action="store_false")
+    parser.set_defaults(wiht_yarn=False)
+
+    parser.add_argument("--with-r", dest="with_r", action="store_true")
+    parser.add_argument("--no-r", dest="with_r", action="store_false")
+    parser.set_defaults(with_r=False)
+
+    parser.add_argument("--output-dir", dest="output_dir", required=True)
+
+    parser.add_argument("--docker-prefix", dest="docker_prefix", default="zero323")
+    parser.add_argument("--docker-names", dest="docker_name", default="spark-sandbox")
+
+    parser.add_argument("--profile", choices=["local", "standalone"], default="local")
+    parser.add_argument("--client-entrypoint",
+                        choices=["spark-submit", "spark-shell", "pyspark", "sparkR"],
+                        default="spark-submit")
+
+    make_box(parser.parse_args())
