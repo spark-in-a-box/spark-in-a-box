@@ -18,7 +18,9 @@ usage: makebox [-h] [--username USERNAME]
                [--jdk {7,8}] [--hadoop-version HADOOP_VERSION]
                [--with-hadoop-provided] [--no-hadoop-provided] [--with-hive]
                [--no-hive] [--with-yarn] [--no-yarn] [--with-r] [--no-r]
-               --output-dir OUTPUT_DIR
+               --output-dir OUTPUT_DIR [--docker-prefix DOCKER_PREFIX]
+               [--docker-names DOCKER_NAME] [--profile {local,standalone}]
+               [--client-entrypoint {spark-submit,spark-shell,pyspark,sparkR}]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -43,4 +45,8 @@ optional arguments:
   --with-r
   --no-r
   --output-dir OUTPUT_DIR
+  --docker-prefix DOCKER_PREFIX
+  --docker-names DOCKER_NAME
+  --profile {local,standalone}
+  --client-entrypoint {spark-submit,spark-shell,pyspark,sparkR}
 ```
