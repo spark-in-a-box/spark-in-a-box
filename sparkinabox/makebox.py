@@ -6,7 +6,7 @@ from __future__ import print_function, division, absolute_import
 import os
 import sys
 
-from sparkinabox.render import render_docker
+from sparkinabox.render import render_docker, render_make
 from sparkinabox.utils import closest_apache_mirror, mvn_params, anaconda_installer, anaconda_url
 
 targets = {
@@ -52,5 +52,8 @@ def make_box(args):
         os.makedirs(basedir)
         with open(os.path.join(basedir, "Dockerfile"), "w") as fw:
             fw.write(render_docker(context, target))
+
+    with open(os.path.join(args.output_dir, "Makefile"), "w") as fw:
+        fw.write(render_make(context))
 
 
