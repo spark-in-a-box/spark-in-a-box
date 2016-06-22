@@ -21,9 +21,10 @@ def main():
     parser.add_argument("--python-packages", nargs="*",
                         default="numpy scipy scikit-learn numexpr numba curl toolz dask")
 
-    parser.add_argument('--with-mkl', dest='nomkl', action="store_false")
-    parser.add_argument('--no-mkl', dest='nomkl', action="store_true")
-    parser.set_defaults(nomkl=True)
+    mkl_parser = parser.add_mutually_exclusive_group(required=False)
+    mkl_parser.add_argument('--with-mkl', dest='nomkl', action="store_false")
+    mkl_parser.add_argument('--no-mkl', dest='nomkl', action="store_true")
+    mkl_parser.set_defaults(nomkl=True)
 
     parser.add_argument("--python-hashseed", default=random.randint(0, 2 ** 31 - 1), type=int)
 
@@ -33,21 +34,25 @@ def main():
 
     parser.add_argument("--hadoop-version", default="2.7.2")
 
-    parser.add_argument("--with-hadoop-provided", dest="with_hadoop_provided", action="store_true")
-    parser.add_argument("--no-hadoop-provided", dest="with_hadoop_provided", action="store_false")
-    parser.set_defaults(hadoop_provided=True)
+    hadoop_provided_parser = parser.add_mutually_exclusive_group(required=False)
+    hadoop_provided_parser.add_argument("--with-hadoop-provided", dest="with_hadoop_provided", action="store_true")
+    hadoop_provided_parser.add_argument("--no-hadoop-provided", dest="with_hadoop_provided", action="store_false")
+    hadoop_provided_parser.set_defaults(hadoop_provided=True)
 
-    parser.add_argument("--with-hive", dest="with_hive", action="store_true")
-    parser.add_argument("--no-hive", dest="with_hive", action="store_false")
-    parser.set_defaults(with_hive=True)
+    hive_parser = parser.add_mutually_exclusive_group(required=False)
+    hive_parser.add_argument("--with-hive", dest="with_hive", action="store_true")
+    hive_parser.add_argument("--no-hive", dest="with_hive", action="store_false")
+    hive_parser.set_defaults(with_hive=True)
 
-    parser.add_argument("--with-yarn", dest="with_yarn", action="store_true")
-    parser.add_argument("--no-yarn", dest="with_yarn", action="store_false")
-    parser.set_defaults(wiht_yarn=False)
+    yarn_parser = parser.add_mutually_exclusive_group(required=False)
+    yarn_parser.add_argument("--with-yarn", dest="with_yarn", action="store_true")
+    yarn_parser.add_argument("--no-yarn", dest="with_yarn", action="store_false")
+    yarn_parser.set_defaults(wiht_yarn=False)
 
-    parser.add_argument("--with-r", dest="with_r", action="store_true")
-    parser.add_argument("--no-r", dest="with_r", action="store_false")
-    parser.set_defaults(with_r=False)
+    r_parser = parser.add_mutually_exclusive_group(required=False)
+    r_parser.add_argument("--with-r", dest="with_r", action="store_true")
+    r_parser.add_argument("--no-r", dest="with_r", action="store_false")
+    r_parser.set_defaults(with_r=False)
 
     parser.add_argument("--output-dir", dest="output_dir", required=True)
 
