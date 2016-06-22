@@ -1,11 +1,13 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
+
 from __future__ import (absolute_import, division, print_function)
 import random
 import argparse
 
 from sparkinabox.release import __author__, __version__
 from sparkinabox.makebox import make_box
+
 
 def main():
     parser = argparse.ArgumentParser()
