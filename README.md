@@ -40,7 +40,9 @@ optional arguments:
   --with-mkl            Use Python packages (NumpPy, SciPy) build using MKL
   --no-mkl              Use Python packages using LGPL libraries.
   --python-hashseed PYTHON_HASHSEED
-                        HASHSEED for Python interpreters. Random by default.
+                        Hash seed for Python interpreters. Random by
+                        default.See:
+                        http://stackoverflow.com/q/36798833/1560062
   --scala {2.10,2.11}   Scala version which should be used to compile Spark.
   --spark {1.6.1,2.0.0-preview}
                         Version of Spark which should be compiled.

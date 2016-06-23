@@ -33,7 +33,8 @@ def main():
     mkl_parser.set_defaults(nomkl=True)
 
     parser.add_argument("--python-hashseed", default=random.randint(0, 2 ** 31 - 1), type=int,
-                        help="HASHSEED for Python interpreters. Random by default.")
+                        help="Hash seed for Python interpreters. Random by default."
+                             "See: http://stackoverflow.com/q/36798833/1560062")
 
     parser.add_argument("--scala", choices=["2.10", "2.11"], default="2.11",
                         help="Scala version which should be used to compile Spark.")
