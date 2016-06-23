@@ -27,31 +27,44 @@ usage: makebox [-h] [--username USERNAME]
 
 optional arguments:
   -h, --help            show this help message and exit
-  --username USERNAME
+  --username USERNAME   User name which will be used in the containers.
   --anaconda-repository ANACONDA_REPOSITORY
+                        URL which should be used to download Anaconda
+                        installers.
   --anaconda {anaconda,miniconda}
+                        Anaconda version to be installed on all nodes.
   --python {2,3}
   --python-packages [PYTHON_PACKAGES [PYTHON_PACKAGES ...]]
-  --with-mkl
-  --no-mkl
+                        A list of Python packages to be installed on all
+                        nodes.
+  --with-mkl            Use Python packages (NumpPy, SciPy) build using MKL
+  --no-mkl              Use Python packages using LGPL libraries.
   --python-hashseed PYTHON_HASHSEED
-  --scala {2.10,2.11}
+                        HASHSEED for Python interpreters. Random by default.
+  --scala {2.10,2.11}   Scala version which should be used to compile Spark.
   --spark {1.6.1,2.0.0-preview}
-  --jdk {7,8}
+                        Version of Spark which should be compiled.
+  --jdk {7,8}           JDK version.
   --hadoop-version HADOOP_VERSION
+                        Hadoop version to be used.
   --with-hadoop-provided
-  --no-hadoop-provided
-  --with-hive
-  --no-hive
-  --with-yarn
-  --no-yarn
-  --with-r
-  --no-r
+                        Download standalone Hadoop libraries.
+  --no-hadoop-provided  Build Spark with embedded Hadoop.
+  --with-hive           Build Spark with Hive support.
+  --no-hive             Build Spark without Hive support.
+  --with-yarn           Build Spark with Yarn.
+  --no-yarn             Build Spark without Yarn.
+  --with-r              Install R and build Spark with SparkR
+  --no-r                Don't install R.
   --output-dir OUTPUT_DIR
+                        Output directory to put Dockerfiles.
   --docker-prefix DOCKER_PREFIX
+                        Image will be named {docker-prefix}/{docker-
+                        name}-{role}.
   --docker-name DOCKER_NAME
   --profile {local,standalone}
   --client-entrypoint {spark-submit,spark-shell,pyspark,sparkR}
+                        Entry point to be used by the client image.
 ```
 
 ### Example session
