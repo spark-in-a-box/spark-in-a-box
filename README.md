@@ -3,7 +3,7 @@ A simple commandline utility to generate Docker images for testing and developme
 ## Installation 
 
 ```
-pip install -e git://github.com/zero323/spark-in-a-box.git@v0.0.6#egg=sparkinabox
+pip install -e git://github.com/zero323/spark-in-a-box.git@v0.0.7#egg=sparkinabox
 ```
 
 ## Usage
