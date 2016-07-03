@@ -88,4 +88,7 @@ def main():
                         default="spark-submit",
                         help="Entry point to be used by the client image.")
 
+    parser.add_argument("--mvn-artifacts", nargs="*",
+                        help="A list of Maven artifacts which should be available on each machine.")
+
     make_box(parser.parse_args())

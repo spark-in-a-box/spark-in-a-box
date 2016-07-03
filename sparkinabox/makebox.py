@@ -40,6 +40,7 @@ def make_context(args):
         "DOCKER_NAME": args.docker_name,
         "CLIENT_ENTRYPOINT": args.client_entrypoint,
         "PROFILE": args.profile,
+        "MVN_ARTIFACTS": args.mvn_artifacts,
     }
 
 
