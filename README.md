@@ -3,7 +3,7 @@ A simple commandline utility to generate Docker images for testing and developme
 ## Installation 
 
 ```
-pip install -e git://github.com/zero323/spark-in-a-box.git@v0.0.6#egg=sparkinabox
+pip install -e git://github.com/zero323/spark-in-a-box.git@v0.0.7#egg=sparkinabox
 ```
 
 ## Usage
@@ -24,6 +24,23 @@ usage: makebox [-h] [--username USERNAME]
                [--docker-prefix DOCKER_PREFIX] [--docker-name DOCKER_NAME]
                [--profile {local,standalone}]
                [--client-entrypoint {spark-submit,spark-shell,pyspark,sparkR}]
+               [--mvn-artifacts [MVN_ARTIFACTS [MVN_ARTIFACTS ...]]]
+makebox: error: the following arguments are required: --output-dir
+➜  spark-in-a-box git:(jvm-deps) ✗ makebox --help
+usage: makebox [-h] [--username USERNAME]
+               [--anaconda-repository ANACONDA_REPOSITORY]
+               [--anaconda {anaconda,miniconda}] [--python {2,3}]
+               [--python-packages [PYTHON_PACKAGES [PYTHON_PACKAGES ...]]]
+               [--with-mkl | --no-mkl] [--python-hashseed PYTHON_HASHSEED]
+               [--scala {2.10,2.11}] [--spark {1.6.1,2.0.0-preview}]
+               [--jdk {7,8}] [--hadoop-version HADOOP_VERSION]
+               [--with-hadoop-provided | --no-hadoop-provided]
+               [--with-hive | --no-hive] [--with-yarn | --no-yarn]
+               [--with-r | --no-r] --output-dir OUTPUT_DIR
+               [--docker-prefix DOCKER_PREFIX] [--docker-name DOCKER_NAME]
+               [--profile {local,standalone}]
+               [--client-entrypoint {spark-submit,spark-shell,pyspark,sparkR}]
+               [--mvn-artifacts [MVN_ARTIFACTS [MVN_ARTIFACTS ...]]]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -67,6 +84,9 @@ optional arguments:
   --profile {local,standalone}
   --client-entrypoint {spark-submit,spark-shell,pyspark,sparkR}
                         Entry point to be used by the client image.
+  --mvn-artifacts [MVN_ARTIFACTS [MVN_ARTIFACTS ...]]
+                        A list of Maven artifacts which should be available on
+                        each machine.
 ```
 
 ### Example session

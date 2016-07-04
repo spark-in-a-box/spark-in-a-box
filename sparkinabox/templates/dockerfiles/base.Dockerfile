@@ -62,4 +62,12 @@ RUN wget {{ SPARK_DIST_URL }}/spark-{{ SPARK_VERSION }}/spark-{{ SPARK_VERSION }
                  -Pnetlib-lgpl -DskipTests {{ MVN_PARAMS }} \
                  clean package
 
+{% if MVN_ARTIFACTS %}
+{% for ARTIFACT in MVN_ARTIFACTS %}
+
+{% if loop.first %}RUN {% else %}    {% endif %}$SPARK_HOME/build/mvn dependency:get -Dartifact={{ ARTIFACT }} {% if not loop.last %}\{% endif %}
+
+{% endfor %}
+{% endif %}
+
 ENV PATH $PATH:$SPARK_HOME/bin
