@@ -65,7 +65,7 @@ RUN wget {{ SPARK_DIST_URL }}/spark-{{ SPARK_VERSION }}/spark-{{ SPARK_VERSION }
 {% if MVN_ARTIFACTS %}
 {% for ARTIFACT in MVN_ARTIFACTS %}
 
-{% if loop.first %}RUN {% else %}    {% endif %}mvn dependency:get -Dartifact={{ ARTIFACT }} {% if not loop.last %}\{% endif %}
+{% if loop.first %}RUN {% else %}    {% endif %}$SPARK_HOME/build/mvn dependency:get -Dartifact={{ ARTIFACT }} {% if not loop.last %}\{% endif %}
 
 {% endfor %}
 {% endif %}
