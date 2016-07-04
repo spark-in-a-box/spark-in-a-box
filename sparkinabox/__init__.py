@@ -89,6 +89,8 @@ def main():
                         help="Entry point to be used by the client image.")
 
     parser.add_argument("--mvn-artifacts", nargs="*",
-                        help="A list of Maven artifacts which should be available on each machine.")
+                        help=(
+                            "A list of Maven artifacts which should be available on each machine "
+                            "(space separated list in format groupId:artifactId:version)"))
 
     make_box(parser.parse_args())

@@ -86,7 +86,8 @@ optional arguments:
                         Entry point to be used by the client image.
   --mvn-artifacts [MVN_ARTIFACTS [MVN_ARTIFACTS ...]]
                         A list of Maven artifacts which should be available on
-                        each machine.
+                        each machine (space separated list in format
+                        groupId:artifactId:version)
 ```
 
 ### Example session
