@@ -38,7 +38,7 @@ def main():
 
     parser.add_argument("--scala", choices=["2.10", "2.11"], default="2.11",
                         help="Scala version which should be used to compile Spark.")
-    parser.add_argument("--spark", choices=["1.6.1", "2.0.0-preview"], default="2.0.0-preview",
+    parser.add_argument("--spark", choices=["1.6.1", "2.0.0"], default="2.0.0",
                         help="Version of Spark which should be compiled.")
     parser.add_argument("--jdk", choices=["7", "8"], default="8",
                         help="JDK version."),
