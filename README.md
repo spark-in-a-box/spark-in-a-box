@@ -3,7 +3,7 @@ A simple commandline utility to generate Docker images for testing and developme
 ## Installation 
 
 ```
-pip install -e git://github.com/zero323/spark-in-a-box.git@v0.0.7#egg=sparkinabox
+pip install -e git://github.com/zero323/spark-in-a-box.git@v0.0.8#egg=sparkinabox
 ```
 
 ## Usage
@@ -16,24 +16,9 @@ usage: makebox [-h] [--username USERNAME]
                [--anaconda {anaconda,miniconda}] [--python {2,3}]
                [--python-packages [PYTHON_PACKAGES [PYTHON_PACKAGES ...]]]
                [--with-mkl | --no-mkl] [--python-hashseed PYTHON_HASHSEED]
-               [--scala {2.10,2.11}] [--spark {1.6.1,2.0.0-preview}]
-               [--jdk {7,8}] [--hadoop-version HADOOP_VERSION]
-               [--with-hadoop-provided | --no-hadoop-provided]
-               [--with-hive | --no-hive] [--with-yarn | --no-yarn]
-               [--with-r | --no-r] --output-dir OUTPUT_DIR
-               [--docker-prefix DOCKER_PREFIX] [--docker-name DOCKER_NAME]
-               [--profile {local,standalone}]
-               [--client-entrypoint {spark-submit,spark-shell,pyspark,sparkR}]
-               [--mvn-artifacts [MVN_ARTIFACTS [MVN_ARTIFACTS ...]]]
-makebox: error: the following arguments are required: --output-dir
-➜  spark-in-a-box git:(jvm-deps) ✗ makebox --help
-usage: makebox [-h] [--username USERNAME]
-               [--anaconda-repository ANACONDA_REPOSITORY]
-               [--anaconda {anaconda,miniconda}] [--python {2,3}]
-               [--python-packages [PYTHON_PACKAGES [PYTHON_PACKAGES ...]]]
-               [--with-mkl | --no-mkl] [--python-hashseed PYTHON_HASHSEED]
-               [--scala {2.10,2.11}] [--spark {1.6.1,2.0.0-preview}]
-               [--jdk {7,8}] [--hadoop-version HADOOP_VERSION]
+               [--scala {2.10,2.11}]
+               [--spark {1.6.1,1.6.2,1.6.3,2.0.0,2.0.1,2.0.2}] [--jdk {7,8}]
+               [--hadoop-version HADOOP_VERSION]
                [--with-hadoop-provided | --no-hadoop-provided]
                [--with-hive | --no-hive] [--with-yarn | --no-yarn]
                [--with-r | --no-r] --output-dir OUTPUT_DIR
@@ -61,7 +46,7 @@ optional arguments:
                         default.See:
                         http://stackoverflow.com/q/36798833/1560062
   --scala {2.10,2.11}   Scala version which should be used to compile Spark.
-  --spark {1.6.1,2.0.0-preview}
+  --spark {1.6.1,1.6.2,1.6.3,2.0.0,2.0.1,2.0.2}
                         Version of Spark which should be compiled.
   --jdk {7,8}           JDK version.
   --hadoop-version HADOOP_VERSION
