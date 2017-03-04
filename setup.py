@@ -10,7 +10,7 @@ setup(
     author=__author__,
     author_email="",
     description="A simple Apache Spark image generator.",
-    install_requires=["jinja2", "requests", "pyyaml"],
+    install_requires=["jinja2", "requests", "pyyaml", "docker-compose"],
     scripts=["bin/makebox"],
     package_data={"": [
         "templates/dockerfiles/*",
