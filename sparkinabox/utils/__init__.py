@@ -13,15 +13,10 @@ def closest_apache_mirror(fallback=None):
     return (r.json().get("preferred", fallback) if r.ok else fallback).rstrip("/")
 
 
-def anaconda_url(base_url, anaconda):
-    return {"anaconda": "{0}/archive", "miniconda": "{0}/miniconda"}[anaconda].format(base_url)
-
-
-def anaconda_installer(anaconda, anaconda_version, python_version):
-    return {
-        "anaconda":  "Anaconda{0}-{1}-Linux-x86.sh",
-        "miniconda": "Miniconda{0}-{1}-Linux-x86_64.sh"
-    }[anaconda].format(python_version, anaconda_version)
+def anaconda_installer(anaconda_version, python_version):
+    return (
+       "Miniconda{0}-{1}-Linux-x86_64.sh".format(python_version, anaconda_version)
+    )
 
 
 def mvn_params(args):

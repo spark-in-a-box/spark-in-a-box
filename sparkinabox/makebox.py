@@ -7,7 +7,7 @@ import os
 import sys
 
 from sparkinabox.render import render_docker, render_make
-from sparkinabox.utils import closest_apache_mirror, mvn_params, anaconda_installer, anaconda_url
+from sparkinabox.utils import closest_apache_mirror, mvn_params, anaconda_installer
 from sparkinabox.compose import make_compose
 
 targets = {
@@ -32,8 +32,8 @@ def make_context(args):
         "SPARK_DIST_URL": "{0}/spark".format(apache_mirror),
         "HADOOP_DIST_URL": "{0}/hadoop/common".format(apache_mirror),
         "MVN_PARAMS": mvn_params(args),
-        "ANACONDA_INSTALLER": anaconda_installer(args.anaconda, "latest", args.python),
-        "ANACONDA_URL": anaconda_url(args.anaconda_repository, args.anaconda),
+        "ANACONDA_INSTALLER": anaconda_installer(args.anaconda_version, args.python),
+        "ANACONDA_URL": args.anaconda_repository,
         "PYTHON_HASHSEED": args.python_hashseed,
         "PYTHON_PACKAGES":  "{0}{1}".format("nomkl " if args.nomkl else "", args.python_packages),
         "HADOOP_PROVIDED": args.hadoop_provided,

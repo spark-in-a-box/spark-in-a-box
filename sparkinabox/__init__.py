@@ -14,9 +14,9 @@ def main():
 
     parser.add_argument("--username", default="spark", help="User name which will be used in the containers.")
 
-    parser.add_argument("--anaconda-repository", default="https://repo.continuum.io",
+    parser.add_argument("--anaconda-repository", default="https://repo.continuum.io/miniconda",
                         help="URL which should be used to download Anaconda installers.")
-    parser.add_argument("--anaconda", choices=["anaconda", "miniconda"], default="miniconda",
+    parser.add_argument("--anaconda-version", choices=["4.2.12"], default="4.2.12",
                         help="Anaconda version to be installed on all nodes.")
 
     parser.add_argument("--python", choices=["2", "3"], default="3")
