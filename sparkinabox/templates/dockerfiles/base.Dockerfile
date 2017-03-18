@@ -26,6 +26,9 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*ce
 
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v{{ DUMB_INIT_VERSION }}/dumb-init_{{ DUMB_INIT_VERSION }}_amd64.deb
+RUN dpkg -i dumb-init_*.deb
+
 RUN groupadd -r {{ USERNAME }} && useradd -r -g {{ USERNAME }} {{ USERNAME }} \
     && mkdir /home/{{ USERNAME }} \
     && chown -R {{ USERNAME }}:{{ USERNAME }} /home/{{ USERNAME }}
@@ -71,3 +74,5 @@ RUN wget {{ SPARK_DIST_URL }}/spark-{{ SPARK_VERSION }}/spark-{{ SPARK_VERSION }
 {% endif %}
 
 ENV PATH $PATH:$SPARK_HOME/bin
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]

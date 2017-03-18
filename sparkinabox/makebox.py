@@ -15,6 +15,8 @@ targets = {
     "standalone": ["base", "client", "master", "worker"]
 }
 
+DUMB_INIT_VERSION = "1.2.0"
+
 
 def make_context(args):
     apache_mirror = closest_apache_mirror()
@@ -41,6 +43,7 @@ def make_context(args):
         "CLIENT_ENTRYPOINT": args.client_entrypoint,
         "PROFILE": args.profile,
         "MVN_ARTIFACTS": args.mvn_artifacts,
+        "DUMB_INIT_VERSION": DUMB_INIT_VERSION,
     }
 
 
