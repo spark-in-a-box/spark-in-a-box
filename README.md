@@ -13,12 +13,11 @@ pip install -e git://github.com/zero323/spark-in-a-box.git@v0.0.9#egg=sparkinabo
 ```
 usage: makebox [-h] [--username USERNAME]
                [--anaconda-repository ANACONDA_REPOSITORY]
-               [--anaconda-version {4.2.12}] [--python {2,3}]
+               [--anaconda-version {4.7.12}] [--python {3}]
                [--python-packages [PYTHON_PACKAGES [PYTHON_PACKAGES ...]]]
                [--with-mkl | --no-mkl] [--python-hashseed PYTHON_HASHSEED]
-               [--scala {2.10,2.11}]
-               [--spark {1.6.1,1.6.2,1.6.3,2.0.0,2.0.1,2.0.2,2.1.0}]
-               [--jdk {7,8}] [--hadoop-version HADOOP_VERSION]
+               [--scala {2.11,2.12}] [--spark {2.4.4,3.0.0-preview2}]
+               [--jdk {8,11}] [--hadoop-version HADOOP_VERSION]
                [--with-hadoop-provided | --no-hadoop-provided]
                [--with-hive | --no-hive] [--with-yarn | --no-yarn]
                [--with-r | --no-r] --output-dir OUTPUT_DIR
@@ -33,9 +32,9 @@ optional arguments:
   --anaconda-repository ANACONDA_REPOSITORY
                         URL which should be used to download Anaconda
                         installers.
-  --anaconda-version {4.2.12}
+  --anaconda-version {4.7.12}
                         Anaconda version to be installed on all nodes.
-  --python {2,3}
+  --python {3}
   --python-packages [PYTHON_PACKAGES [PYTHON_PACKAGES ...]]
                         A list of Python packages to be installed on all
                         nodes.
@@ -45,10 +44,10 @@ optional arguments:
                         Hash seed for Python interpreters. Random by
                         default.See:
                         http://stackoverflow.com/q/36798833/1560062
-  --scala {2.10,2.11}   Scala version which should be used to compile Spark.
-  --spark {1.6.1,1.6.2,1.6.3,2.0.0,2.0.1,2.0.2,2.1.0}
+  --scala {2.11,2.12}   Scala version which should be used to compile Spark.
+  --spark {2.4.4,3.0.0-preview2}
                         Version of Spark which should be compiled.
-  --jdk {7,8}           JDK version.
+  --jdk {8,11}          JDK version.
   --hadoop-version HADOOP_VERSION
                         Hadoop version to be used.
   --with-hadoop-provided
@@ -80,7 +79,7 @@ optional arguments:
 
 ```bash
 # Create docker files
-makebox --python-hashseed 323 --output-dir sparkinabox --profile standalone --spark 2.1.0 
+makebox --python-hashseed 323 --output-dir sparkinabox --profile standalone --spark 2.4.4
 cd sparkinabox
 # Build images
 make build

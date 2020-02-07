@@ -15,7 +15,7 @@ targets = {
     "standalone": ["base", "client", "master", "worker"]
 }
 
-DUMB_INIT_VERSION = "1.2.0"
+DUMB_INIT_VERSION = "1.2.2"
 
 
 def make_context(args):
@@ -65,6 +65,3 @@ def make_box(args):
 
     with open(os.path.join(args.output_dir, "docker-compose.yml"), "w") as fw:
         fw.write(make_compose(context, targets[args.profile]))
-
-
-

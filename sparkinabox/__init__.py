@@ -16,10 +16,10 @@ def main():
 
     parser.add_argument("--anaconda-repository", default="https://repo.continuum.io/miniconda",
                         help="URL which should be used to download Anaconda installers.")
-    parser.add_argument("--anaconda-version", choices=["4.2.12"], default="4.2.12",
+    parser.add_argument("--anaconda-version", choices=["4.7.12"], default="4.7.12",
                         help="Anaconda version to be installed on all nodes.")
 
-    parser.add_argument("--python", choices=["2", "3"], default="3")
+    parser.add_argument("--python", choices=["3"], default="3")
     parser.add_argument("--python-packages", nargs="*",
                         default="numpy scipy scikit-learn numexpr numba curl toolz dask",
                         help="A list of Python packages to be installed on all nodes."
@@ -36,15 +36,15 @@ def main():
                         help="Hash seed for Python interpreters. Random by default."
                              "See: http://stackoverflow.com/q/36798833/1560062")
 
-    parser.add_argument("--scala", choices=["2.10", "2.11"], default="2.11",
+    parser.add_argument("--scala", choices=["2.11", "2.12"], default="2.12",
                         help="Scala version which should be used to compile Spark.")
     parser.add_argument("--spark",
-                        choices=["1.6.1", "1.6.2", "1.6.3", "2.0.0", "2.0.1", "2.0.2", "2.1.0"], default="2.1.0",
+                        choices=["2.4.4", "3.0.0-preview2"], default="2.4.4",
                         help="Version of Spark which should be compiled.")
-    parser.add_argument("--jdk", choices=["7", "8"], default="8",
+    parser.add_argument("--jdk", choices=["8", "11"], default="11",
                         help="JDK version."),
 
-    parser.add_argument("--hadoop-version", default="2.7.2",
+    parser.add_argument("--hadoop-version", default="2.7.7",
                         help="Hadoop version to be used.")
 
     hadoop_provided_parser = parser.add_mutually_exclusive_group(required=False)

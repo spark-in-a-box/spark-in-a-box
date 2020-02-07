@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 LABEL spark.version="{{ SPARK_VERSION }}" \
       hadoop.version="{{ HADOOP_FULL_VERSION }}" \
